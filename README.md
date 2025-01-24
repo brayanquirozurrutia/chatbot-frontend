@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chatbot with WebSocket, React, Next.js, TailwindCSS
 
-## Getting Started
+This project is a simple real-time chatbot application using WebSocket, React, Next.js, and TailwindCSS. It includes custom sounds for sent and received messages using Howler.js.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Real-time communication via WebSocket.
+- Unique channel generation using UUID.
+- Modern and responsive user interface with TailwindCSS.
+- Custom sounds for sending and receiving messages.
+
+## Requirements
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/brayanquirozurrutia/chatbot-frontend.git
+   cd chatbot-frontend
+   ```
+
+2. Install the dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Create the necessary directories for sounds and ensure to add the `send.mp3` and `receive.mp3` files in `public/sounds/`.
+
+4. Set up a WebSocket server at `ws://localhost:8000/chat/ws/` (or adjust the URL as needed).
+
+## Usage
+
+1. Start the application:
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+2. Open your browser at [http://localhost:3000](http://localhost:3000).
+
+3. The app will generate a unique channel, and you can chat in real time.
+
+## Project Structure
+
+```
+.
+├── public/
+│   ├── sounds/
+│   │   ├── receive.mp3
+│   │   └── send.mp3
+├── src/
+│   ├── app/
+│   │   └── page.tsx
+├── README.md
+├── package.json
+├── tailwind.config.js
+├── tsconfig.json
+└── ...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **React**: Library for building user interfaces.
+- **Next.js**: Framework for React enabling server-side rendering.
+- **TailwindCSS**: CSS framework for modern and responsive designs.
+- **Howler.js**: Audio library for playing sounds.
+- **UUID**: Universal unique identifier generator.
+- **WebSocket**: Protocol for real-time communication.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Customization
 
-## Learn More
+- Change the sounds: Replace the `send.mp3` and `receive.mp3` files in `public/sounds/`.
+- Adjust the WebSocket server URL in `src/app/page.tsx`:
 
-To learn more about Next.js, take a look at the following resources:
+  ```typescript
+  const socketInstance = new WebSocket(`ws://localhost:8000/chat/ws/${randomChannel}`);
+  ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Modify the visual styles in `tailwind.config.js` or directly in the components.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Developed with ❤️ by [Brayan Nicolas Quiroz Urrutia](https://www.brayanquiroz.cl/).
